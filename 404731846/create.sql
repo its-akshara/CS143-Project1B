@@ -1,5 +1,5 @@
 create table Movie(id int, title varchar(100), year int, rating varchar(10), company varchar(50));
-create table Actor(id int, last varchar(20), first varchar(20), sex VARCHAR(6), dob date, dod date);
+create table Actor(id int, last varchar(20), first varchar(20), sex varchar(6), dob date, dod date);
 create table Sales(mid int, ticketsSold int, totalIncome int);
 create table Director(id int, last varchar(20), first varchar(20),dob date, dod date);
 create table MovieGenre(mid int, genre varchar(20));
