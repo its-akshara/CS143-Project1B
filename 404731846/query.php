@@ -45,7 +45,7 @@ Enter a select query.
 
         while($row = mysql_fetch_row($result))
         {
-            for($i=0; $i<3; $i++)
+            for($i=0; $i<mysql_num_fields($result); $i++)
 	    {
 		print "\t \t \t \t \t \t $row[$i]";
 	    }
