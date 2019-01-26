@@ -6,3 +6,9 @@ select count(*) from (select ma.aid from MovieActor ma group by aid having count
 
 -- Joining Sales and Movie using mid, checking for ticketsSold>1000000
 select m.title from Sales s, Movie m where m.id=s.mid and s.ticketsSold > 1000000;
+
+-- Printing names of directors who have directed movies with a rotten tomatoes score of more than 80%
+select distinct concat(d.first," ", d.last) as "name" from MovieRating mr,MovieDirector md, Director d where mr.rot > 80 and md.did=d.id and mr.mid=md.mid;
+
+-- Print all horror movie titles
+select m.title from Movie m, MovieGenre g where g.mid=m.id and g.genre='Horror';
