@@ -7,12 +7,19 @@ create table Sales(mid int, ticketsSold int, totalIncome int);
 
 -- directors are unique people and their ids can't be negative
 create table Director(id int, last varchar(20), first varchar(20),dob date, dod date, PRIMARY KEY (id), CHECK(id>0));
-create table MovieGenre(mid int, genre varchar(20));
+
+-- Movie Genres list the genre of each movie, so they reference the Movies table.
+create table MovieGenre(mid int, genre varchar(20), FOREIGN KEY(mid) references Movie(id) ENGINE=INNODB);
+
+-- Movie directors reference the ids of movies, hence the foreign key
 create table MovieDirector(mid int, did int, FOREIGN KEY(mid) references Movie(id) ENGINE=INNODB);
 create table MovieActor(mid int, aid int, role varchar(50));
 
 -- Rotten tomato scores are between 0 and 100, and imdb scores are between 0 and 10
-create table MovieRating(mid int, imdb int, rot int, CHECK(rot>=0 and rot<=100 and imdb>=0 and imdb<=10));
-create table Review(name varchar(20), time timestamp, mid int, rating int, comment varchar(500));
+-- Each Movie has a rating, so it acts as the foreign key in this table
+create table MovieRating(mid int, imdb int, rot int, CHECK(rot>=0 and rot<=100 and imdb>=0 and imdb<=10), FOREIGN KEY(mid) references Movie(id) ENGINE=INNODB);
+
+-- Each review is about a movie, so the mid is the foreign key referencing the Movie table
+create table Review(name varchar(20), time timestamp, mid int, rating int, comment varchar(500),FOREIGN KEY(mid) references Movie(id) ENGINE=INNODB);
 create table MaxPersonID(id int);
 create table MaxMovieID(id int);
