@@ -2,21 +2,6 @@
 PHP file using a textarea to receive a query from the user and display the results after interacting with MySQL.
 -->
 
-<?php
-	$db_connection = mysql_connect("localhost", "cs143", "");
-	mysql_select_db("CS143", $db_connection);
-	$result = mysql_query("select * from MovieRating where mid=4729;");
-	while($row = mysql_fetch_row($result))
-	{
-		$mid=$row[0];
-		$imdb=$row[1];
-		$rot=$row[2];
-		print "$mid, $imdb, $rot<br/>";
-	}
-	mysql_close($db_connection);
-?>
-
-
 <!DOCTYPE html>
 <html>
 <head><title>CS143 Project 1A Demo</title></head>
@@ -37,3 +22,34 @@ Enter a select query.
 
 </body>
 </html>
+
+<?php
+        $db_connection = mysql_connect("localhost", "cs143", "");
+        mysql_select_db("CS143", $db_connection);
+        print "Your query was:  ";
+        $query =  $_GET['query'];
+        print "$query <br/> <br/>";
+
+
+        $result = mysql_query("$query");
+
+
+        while ($i < mysql_num_fields($result)) 
+        {
+		    $col = mysql_fetch_field($result, $i);
+		    print "\t \t \t \t \t \t $col->name";
+		    $i++;
+	}  
+
+	print "<br/>";
+
+        while($row = mysql_fetch_row($result))
+        {
+            for($i=0; $i<3; $i++)
+	    {
+		print "\t \t \t \t \t \t $row[$i]";
+	    }
+	   print "<br/>";	    
+        }
+        mysql_close($db_connection);
+?>
