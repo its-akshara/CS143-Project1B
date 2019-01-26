@@ -2,7 +2,7 @@
 create table Movie(id int UNIQUE, title varchar(100) NOT NULL, year int, rating varchar(10), company varchar(50), PRIMARY KEY (id));
 
 -- you must be born before you die, unless you aren't dead yet. Actors are all unique.
-create table Actor(id int, last varchar(20), first varchar(20), sex varchar(6), dob date NOT NULL, dod date, PRIMARY KEY (id), CHECK(dob < dod or dod=NULL) );
+create table Actor(id int, last varchar(20), first varchar(20), sex varchar(6), dob date NOT NULL, dod date, PRIMARY KEY (id), CHECK(date(dod)<date(current_timestamp) or dob=NULL) );
 
 -- Each movie has sales, which is why it is a foreign key
 create table Sales(mid int, ticketsSold int, totalIncome int,FOREIGN KEY(mid) references Movie(id)) ENGINE=INNODB;
