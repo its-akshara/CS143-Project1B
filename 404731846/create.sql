@@ -17,7 +17,7 @@ create table MovieGenre(mid int, genre varchar(20), FOREIGN KEY(mid) references 
 create table MovieDirector(mid int, did int, FOREIGN KEY(mid) references Movie(id)) ENGINE=INNODB;
 
 -- Need to keep track of movies of each actor, so it deals witht he Movie table and thus is a foreign key
-create table MovieActor(mid int, aid int, role varchar(50)FOREIGN KEY(mid) references Movie(id)) ENGINE=INNODB;
+create table MovieActor(mid int, aid int, role varchar(50), FOREIGN KEY(mid) references Movie(id)) ENGINE=INNODB;
 
 -- Rotten tomato scores are between 0 and 100, and imdb scores are between 0 and 10
 -- Each Movie has a rating, so it acts as the foreign key in this table
