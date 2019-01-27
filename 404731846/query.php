@@ -33,23 +33,25 @@ Enter a select query.
 
         $result = mysql_query("$query");
 
-
+        echo "<table border='1'>";
+        echo "<tr>";
         while ($i < mysql_num_fields($result)) 
         {
 		    $col = mysql_fetch_field($result, $i);
-		    print "\t \t \t \t \t \t $col->name";
+		    echo "<th>".$col->name."</th>";
 		    $i++;
 	}  
-
-	print "<br/>";
+        echo "</tr>";
 
         while($row = mysql_fetch_row($result))
         {
+            echo "<tr>";
             for($i=0; $i<mysql_num_fields($result); $i++)
 	    {
-		print "\t \t \t \t \t \t $row[$i]";
+		echo "<td align='center'>".$row[$i]."</td>";
 	    }
-	   print "<br/>";	    
+	    echo "</tr>";	    
         }
+        echo "</table>";
         mysql_close($db_connection);
 ?>
