@@ -20,7 +20,26 @@ Enter the following information about the movie you want to add.
     <input type="radio" name="rating" value="surrendere">surrendere  
     <br>
     Production Company: <input type="text" name="company"><br>
-    Genre: <input type="text" name="genre"><br>
+    Genre: <input type="checkbox" name="genre" value="Drama">Drama 
+    <input type="checkbox" name="genre[]" value="Comedy">Comedy 
+    <input type="checkbox" name="genre[]" value="Romance">Romance 
+    <input type="checkbox" name="genre[]" value="Crime">Crime 
+    <input type="checkbox" name="genre[]" value="Horror">Horror 
+    <input type="checkbox" name="genre[]" value="Mystery">Mystery 
+    <input type="checkbox" name="genre[]" value="Thriller">Thriller 
+    <input type="checkbox" name="genre[]" value="Action">Action 
+    <input type="checkbox" name="genre[]" value="Adventure">Adventure 
+    <input type="checkbox" name="genre[]" value="Fantasy">Fantasy 
+    <input type="checkbox" name="genre[]" value="Documentary">Documentary 
+    <input type="checkbox" name="genre[]" value="Family">Family 
+    <input type="checkbox" name="genre[]" value="Sci-Fi">Sci-Fi 
+    <input type="checkbox" name="genre[]" value="Animation">Animation 
+    <input type="checkbox" name="genre[]" value="Musical">Musical 
+    <input type="checkbox" name="genre[]" value="Western">Western  
+    <input type="checkbox" name="genre[]" value="War">War 
+    <input type="checkbox" name="genre[]" value="Adult">Adult 
+    <input type="checkbox" name="genre[]" value="Short">Short  
+    <br>
     Role: <br>
     Actor name: <input type="text" name="actor"><br>
    <input type="submit" value="Add movie!" />
@@ -51,7 +70,6 @@ $title = $_POST['title'];
 $year = $_POST['year'];
 $rating = $_POST['rating'];
 $company = $_POST['company'];
-$genre = $_POST['genre'];
 
 // Receive id info
 $id_query = "Select id from MaxMovieID;";
@@ -67,12 +85,14 @@ if($maxID = $conn->query($id_query))
     {
        echo "Error: " . $sql . "<br>" . $conn->error;
     }
-
     $query = "insert into Movie values($newIDmax,'$title',$year,'$rating','$company');";
-    $conn->query($query) or die($conn->error());
+   $conn->query($query) or die($conn->error());
 
-    $addgenre = "insert into MovieGenre values($newIDmax,'$genre');";
-    $conn->query($addgenre) or die($conn->error());
+    foreach($_POST['genre'] as $genre)
+    {
+       $addgenre = "insert into MovieGenre values($newIDmax,'$genre');";
+       $conn->query($addgenre) or die($conn->error());
+    }
 }
 
 $maxID->free();
