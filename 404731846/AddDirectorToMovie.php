@@ -1,16 +1,16 @@
-<!-- Get information required to add a relation between actor and movie to the database -->
+<!-- Get information required to add a relation between director and movie to the database -->
 <!DOCTYPE html>
 <html>
-<head><title>CS143 Project 1B Add Actor to Movie Relation</title></head>
+<head><title>CS143 Project 1B Add Director to Movie Relation</title></head>
 <body>
-<h1>Add an Actor to Movie Relation to the Database</h1>
+<h1>Add a Director to Movie Relation to the Database</h1>
 <p>
 <font size=2>Created by: <i>Akshara Sundararajan</i> and <i>Rubia Liu</i></font>
 <br>
 Enter the following information about the relation you want to add.
 <p>
-<form action="AddActorToMovie.php" method="POST">
-    Actor Information:
+<form action="AddDirectorToMovie.php" method="POST">
+    Director Information:
     <br>
     First name: <input type="text" name="first">  Last name: <input type="text" name="last">
     <br>
@@ -34,8 +34,6 @@ Enter the following information about the relation you want to add.
     $conn->close();
     ?>
     </select>
-    <br>
-    Role: <input type="text" name="role"><br> 
     <br>
    <input type="submit" value="Add relation!" />
 </form>
@@ -64,7 +62,7 @@ if ($conn->connect_error)
 $title = $_POST['title'];
 $first = $_POST['first'];
 $last = $_POST['last'];
-$role = $_POST['role'];
+
 // Receive id info
 $mid_query = "select id from Movie where title='$title';";
 if($MID = $conn->query($mid_query))
@@ -73,17 +71,18 @@ if($MID = $conn->query($mid_query))
     
     $mid = $row["id"];
     
-    $aid_query = "select id from Actor where first='$first' and last='$last';";
+    $aid_query = "select id from Director where first='$first' and last='$last';";
     $AID = $conn->query($aid_query);
     if(!$AID || $AID->num_rows==0)
     {
-        echo "Invalid Actor name";
+        echo "Invalid Director name";
     }
     else
     {
         $rowA = $AID->fetch_assoc();
         $aid = $rowA["id"];
-        $query = "insert into MovieActor values($mid,$aid,'$role');";
+        echo $aid;
+        $query = "insert into MovieDirector values($mid,$aid);";
         $conn->query($query) or die($conn->error());
     }
 
