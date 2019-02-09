@@ -2,15 +2,23 @@
 
 <!DOCTYPE html>
 <html>
-<head><title>CS143 Project 1B Demo</title></head>
+<head>
+  <title>CS143 Project 1B Demo</title>
+  <link href="main.css" rel="stylesheet" type="text/css" />
+</head>
 <body>
+  <div class="topnav">
+    <a class="active" href="search.php">Search the Databases</a>
+    <a href="AddActorOrDirector.php">Add to a Database</a>
+    <a href="ShowActorInfo.php">Show Information</a>
+  </div>
 <h1>Search For a Movie or Actor</h1>
 Enter a keyword:
 <form action="search.php" method="POST">
    <input type ="text" name="input" size=20 maxlength=60>
    <input type="submit" value="Submit" >
 </form>
-</p>
+
 
 <?php
         $db_connection = mysql_connect("localhost", "cs143", "");
