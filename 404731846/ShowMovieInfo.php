@@ -38,7 +38,13 @@ PHP file using a textarea to receive a query from the user and display the resul
           $query = "select first, last from Director where id=".$isolate_did[0];
           $director_name = mysql_query("$query");
           $isolate_director_name = mysql_fetch_row($director_name);
-          echo "Director: ".$isolate_director_name[0]." ".$isolate_director_name[1]."<br>";
+          if(is_null($isolate_director_name)) {
+            echo "Director: Unknown <br>";
+          }
+          else {
+
+            echo "Director: ".$isolate_director_name[0]." ".$isolate_director_name[1]."<br>";
+          }
           $query = "select genre from MovieGenre where mid=".$movie_id;
           $movie_genres = mysql_query("$query");
           echo "Genre: ";
@@ -56,7 +62,7 @@ PHP file using a textarea to receive a query from the user and display the resul
           echo "<br>";
           echo "</p>";
 
-          echo "<br><hr>";
+          echo "<hr>";
 
           echo "<h3>Actors in this Movie</h3>";
 
@@ -81,6 +87,49 @@ PHP file using a textarea to receive a query from the user and display the resul
             }
             echo "</table>";
           }
+
+          echo "<hr>";
+
+          echo "<h3>Movie Reviews</h3>";
+          $query = "select name,time,rating,comment from Review where mid=".$movie_id;
+          $review_info = mysql_query("$query");
+          $num_rows = mysql_num_rows($review_info);
+          if(is_null($num_rows)) {
+            print "<p>This movie has no reviews.</p>";
+          }
+          else {
+            $test = "select rating from Review where mid=".$movie_id;
+            $ratings = mysql_query("$test");
+            $num_rows = mysql_num_rows($ratings);
+            $sum =  0;
+            $count = 0;
+            while ($row = mysql_fetch_row($ratings)){
+              $sum += $row[0];
+              $count++;
+            }
+            echo "<p>Average Rating Based On ".$num_rows." Reviews: <strong>".$sum/$count."</strong></p>";
+            echo "<table border='1'>";
+            echo "<tr>";
+            while ($i < mysql_num_fields($review_info)) {
+              $col = mysql_fetch_field($review_info, $i);
+              echo "<th>".$col->name."</th>";
+              $i++;
+            }
+            echo "</tr>";
+
+            while($row = mysql_fetch_row($review_info))
+            {
+              echo "<tr>";
+              for($i=0; $i<mysql_num_fields($review_info); $i++)
+  	          {
+  		          echo "<td align='center'>".$row[$i]."</td>";
+  	          }
+  	          echo "</tr>";
+            }
+            echo "</table>";
+
+          }
+          echo "<p><a href='AddComment.php'>Click here to write a review.</a></p>";
 
         }
 
