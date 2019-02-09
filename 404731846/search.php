@@ -38,7 +38,7 @@ Enter a keyword:
           $movies_found = mysql_query("$query");
 
           echo "<br><hr>";
-          echo "<h3>Found Actors by first/last name</h3>";
+          echo "<h3>Found Actors by name</h3>";
           echo "<table border='1'>";
           echo "<tr><th>id</th><th>name</th><th>sex</th><th>dob</th><th>dod</th></tr>";
           while($row = mysql_fetch_row($actors_found))
