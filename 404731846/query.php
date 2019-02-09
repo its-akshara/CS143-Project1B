@@ -35,22 +35,22 @@ Enter a select query.
 
         echo "<table border='1'>";
         echo "<tr>";
-        while ($i < mysql_num_fields($result)) 
+        while ($i < mysql_num_fields($result))
         {
-		    $col = mysql_fetch_field($result, $i);
-		    echo "<th>".$col->name."</th>";
-		    $i++;
-	}  
+		        $col = mysql_fetch_field($result, $i);
+		        echo "<th>".$col->name."</th>";
+		        $i++;
+	      }
         echo "</tr>";
 
         while($row = mysql_fetch_row($result))
         {
             echo "<tr>";
             for($i=0; $i<mysql_num_fields($result); $i++)
-	    {
-		echo "<td align='center'>".$row[$i]."</td>";
-	    }
-	    echo "</tr>";	    
+	          {
+		             echo "<td align='center'>".$row[$i]."</td>";
+	          }
+	          echo "</tr>";
         }
         echo "</table>";
         mysql_close($db_connection);
