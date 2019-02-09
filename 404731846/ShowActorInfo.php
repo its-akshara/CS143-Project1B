@@ -32,7 +32,7 @@ PHP file using a textarea to receive a query from the user and display the resul
         $actor_info = mysql_query("$query");
         $num_rows = mysql_num_rows($actor_info);
         if($num_rows !== 1) {
-          print "Need more information--parameters given does not return one actor<br>";
+          print "Need more information--parameters given do not return one actor<br>";
         }
         else {
           echo "<table border='1'>";
