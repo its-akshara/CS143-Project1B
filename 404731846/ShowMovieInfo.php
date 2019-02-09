@@ -18,8 +18,8 @@ movie2: 1776, 1972
         mysql_select_db("CS143", $db_connection);
         $movie_title = "1999";
         $movie_year = "1998";
-        $actor_firstname = "Isabelle";
-        $actor_lastname = "A";
+        $actor_firstname = "Caroline";
+        $actor_lastname = "Aaron";
         print "The movie's title is " .$movie_title ."<br>";
         print "The movie's year is " .$movie_year. "<br>";
         print "The lead actor is ".$actor_firstname." ".$actor_lastname."<br>";
@@ -32,6 +32,6 @@ movie2: 1776, 1972
   print "Released: " . $movie_year ."<br/>";
   print "Lead Actor: ".$actor_firstname." ".$actor_lastname."<br>";
 ?>
-<p><a href="ShowActorInfo.php?actor_firstname=<?php echo $actor_firstname?>">Actor</a></p>
+<p><a href="ShowActorInfo.php?actor_firstname=<?php echo $actor_firstname?>&actor_lastname=<?php echo $actor_lastname?>">Actor</a></p>
 </body>
 </html>
