@@ -7,13 +7,35 @@
   <link href="main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-  <div class="topnav">
-    <a class="active" href="search.php">Search the Databases</a>
-    <a href="AddActorOrDirector.php">Add to a Database</a>
-    <a href="ShowActorInfo.php">Show Information</a>
+  <h1>CS143 Movie Database</h1>
+  <div class = "navbar" id="my_centered_buttons">
+    <div class="dropdown1" >
+      <button class="dropbtn1">Add to a Database</button>
+      <div class="dropdown-content1">
+        <a href="AddActorOrDirector.php">Actor or Director</a>
+        <a href="AddMovie.php">Movie</a>
+        <a href="AddActorToMovie.php">Actor to Movie</a>
+        <a href="AddDirectorToMovie.php">Director to Movie</a>
+        <a href="AddComment.php">Movie Reviews</a>
+      </div>
+    </div>
+    <div class="dropdown2" >
+      <button class="dropbtn2">Browse Information</button>
+      <div class="dropdown-content2">
+        <a href="ShowActorInfo.php">Actor Information</a>
+        <a href="ShowMovieInfo.php">Movie Information</a>
+      </div>
+    </div>
+    <div class="dropdown3" >
+      <button class="dropbtn3">Search Database</a></button>
+      <div class="dropdown-content3">
+        <a href="search.php">Actor or Movie</a>
+      </div>
+    </div>
   </div>
-<h1>Search For a Movie or Actor</h1>
-Enter a keyword:
+<br><hr>
+<h2>Search For a Movie or Actor</h2>
+<p>Enter a keyword:
 <form action="search.php" method="POST">
    <input type ="text" name="input" size=20 maxlength=60>
    <input type="submit" value="Submit" >
@@ -86,6 +108,6 @@ Enter a keyword:
         }
         mysql_close($db_connection);
 ?>
-
+</p>
 </body>
 </html>
