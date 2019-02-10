@@ -4,9 +4,38 @@ PHP file using a textarea to receive a query from the user and display the resul
 
 <!DOCTYPE html>
 <html>
-<head><title>CS143 Project 1B Show Movie Info</title></head>
+<head><title>CS143 Project 1B Show Movie Info</title>
+  <link href="main.css" rel="stylesheet" type="text/css" />
+</head>
 <body>
-<h1>Show a Movie's Information</h1>
+  <h1>CS143 Movie Database</h1>
+  <div class = "navbar" id="my_centered_buttons">
+    <div class="dropdown1" >
+      <button class="dropbtn1">Add to a Database</button>
+      <div class="dropdown-content1">
+        <a href="AddActorOrDirector.php">Actor or Director</a>
+        <a href="AddMovie.php">Movie</a>
+        <a href="AddActorToMovie.php">Actor to Movie</a>
+        <a href="AddDirectorToMovie.php">Director to Movie</a>
+        <a href="AddComment.php">Movie Reviews</a>
+      </div>
+    </div>
+    <div class="dropdown2" >
+      <button class="dropbtn2">Browse Information</button>
+      <div class="dropdown-content2">
+        <a href="ShowActorInfo.php">Actor Information</a>
+        <a href="ShowMovieInfo.php">Movie Information</a>
+      </div>
+    </div>
+    <div class="dropdown3" >
+      <button class="dropbtn3">Search Database</a></button>
+      <div class="dropdown-content3">
+        <a href="search.php">Actor or Movie</a>
+      </div>
+    </div>
+  </div>
+<br><hr>
+<h2>Show a Movie's Information</h2>
 <h3>Movie Information</h3>
 <?php
         $db_connection = mysql_connect("localhost", "cs143", "");

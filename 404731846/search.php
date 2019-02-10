@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CS143 Project 1B Demo</title>
+  <title>CS143 Project 1B Search </title>
   <link href="main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
