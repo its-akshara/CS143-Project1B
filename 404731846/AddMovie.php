@@ -71,8 +71,11 @@ Enter the following information about the movie you want to add.
     <input type="checkbox" name="genre[]" value="Adult">Adult
     <input type="checkbox" name="genre[]" value="Short">Short
     <br>
-    Role: <br>
-    Actor name: <input type="text" name="actor"><br>
+    <b>Associate Actor with New Movie</b>
+    <br>
+    Role: <input type="text" name="role"><br>
+    Actor first name: <input type="text" name="first"><br>
+    Actor last name: <input type="text" name="last"><br>
    <input type="submit" value="Add movie!" />
 </form>
 </p>
@@ -101,6 +104,9 @@ $title = $_POST['title'];
 $year = $_POST['year'];
 $rating = $_POST['rating'];
 $company = $_POST['company'];
+$first = $_POST['first'];
+$last = $_POST['last'];
+$role = $_POST['role'];
 
 // Receive id info
 $id_query = "Select id from MaxMovieID;";
@@ -124,6 +130,15 @@ if($maxID = $conn->query($id_query))
        $addgenre = "insert into MovieGenre values($newIDmax,'$genre');";
        $conn->query($addgenre) or die($conn->error());
     }
+
+    $aid_query = "select id from Actor where first='$first' and last='$last';";
+    $AID = $conn->query($aid_query);
+    $rowA = $AID->fetch_assoc();
+    $aid = $rowA["id"];
+    $query = "insert into MovieActor values($newIDmax,$aid,'$role');";
+    $conn->query($query) or die($conn->error());
+
+
 }
 
 $maxID->free();
