@@ -71,7 +71,7 @@ Enter the following information about the movie you want to add.
     <input type="checkbox" name="genre[]" value="Adult">Adult
     <input type="checkbox" name="genre[]" value="Short">Short
     <br>
-    <b>Associate Actor with New Movie</b>
+    <b>Associate Actor with New Movie (Optional)</b>
     <br>
     Role: <input type="text" name="role"><br>
     Actor first name: <input type="text" name="first"><br>
