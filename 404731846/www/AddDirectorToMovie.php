@@ -109,7 +109,6 @@ if($MID = $conn->query($mid_query))
     {
         $rowA = $AID->fetch_assoc();
         $aid = $rowA["id"];
-        echo $aid;
         $query = "insert into MovieDirector values($mid,$aid);";
         $conn->query($query) or die($conn->error());
     }
