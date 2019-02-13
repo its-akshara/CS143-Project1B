@@ -100,7 +100,6 @@ if($maxID = $conn->query($id_query))
     else if($person === "Director")
     {
         $query = ($status==="Alive"?"insert into Director values($newIDmax,'$last','$first','$dob',NULL);":"insert into Director values($newIDmax,'$last','$first','$dob','$dod');");
-        echo $query;
         $conn->query($query) or die($conn->error());
     }
     $update = "update MaxPersonID set id = id+1;";
