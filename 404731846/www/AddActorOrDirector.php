@@ -53,7 +53,7 @@ Enter the following information about the Actor/Director you want to add.
     <input type="radio" name="status" value="Dead">Dead
     <br>
     If dead, Date of Death (YYYY-MM-DD): <input type="text" name="dod"><br>
-   <input type="submit" value="Add movie!" />
+   <input type="submit" value="Add person!" />
 </form>
 </p>
 <p><small>Note: tables and fields are case sensitive.</small>
